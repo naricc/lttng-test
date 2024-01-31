@@ -18,7 +18,7 @@ TRACEPOINT_EVENT(naricc_test_provider, test_event,
     ),
     TP_FIELDS(
         ctf_sequence_text(char, utf8_text_sequence, utf8_text_value, size_t, strlen(utf8_text_value))
-        ctf_sequence_text(char, wchar_text_sequence, wchar_text_value, size_t, wcslen((wchar_t*)wchar_text_value) * 2 + 2)
+        ctf_sequence_text(wchar_t, wchar_text_sequence, wchar_text_value, size_t, wcslen(wchar_text_value) * 2 + 2)
     )
 )
 
