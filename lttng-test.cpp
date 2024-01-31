@@ -11,13 +11,11 @@ int main() {
     puts("Hello, World!\nPress Enter to continue...");
     getchar();
 
-
-    const wchar_t *text_value = L"Hello, Sequence Text!";
-    size_t text_length = wcslen(text_value);
-
+    const char* utf8_text_value = "Hello, UTF8 Sequence Text!";
+    const wchar_t *wchar_text_value = L"Hello, WChar Sequence Text!";
 
     // Emit the tracepoint event with the sequence text field
-    lttng_ust_tracepoint(naricc_test_provider, test_event, (char*)text_value);
+    lttng_ust_tracepoint(naricc_test_provider, test_event, utf8_text_value, wchar_text_value);
 
     // Disable the event and destroy the session
 

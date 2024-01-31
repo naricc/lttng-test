@@ -13,10 +13,12 @@
 // Define the tracepoint event with a sequence text field
 TRACEPOINT_EVENT(naricc_test_provider, test_event,
     TP_ARGS(
-        char*, text_value
+        const char*, utf8_text_value,
+        const wchar_t*, wchar_text_value
     ),
     TP_FIELDS(
-        ctf_sequence_text(char, text_sequence, text_value, size_t, wcslen((wchar_t*)text_value) * 2 + 2)
+        ctf_sequence_text(char, utf8_text_sequence, utf8_text_value, size_t, strlen(utf8_text_value))
+        ctf_sequence_text(char, wchar_text_sequence, wchar_text_value, size_t, wcslen((wchar_t*)wchar_text_value) * 2 + 2)
     )
 )
 
